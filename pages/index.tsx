@@ -11,18 +11,16 @@ type Props = {
 const Home: NextPage<Props> = ({ articles }) => {
   return (
     <>
-      <section>
-        <ol className={styles.articles}>
-          {articles.map((article) => (
-            <li key={article.name}>
-              <Time date={article.date} />
-              <Link href={`/articles/${article.name}`}>
-                <a>{article.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <ol className={styles.articles}>
+        {articles.map((article) => (
+          <li key={article.name}>
+            <Time date={article.date} />
+            <Link href={`/articles/${article.name}`}>
+              <a>{article.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ol>
     </>
   );
 };
