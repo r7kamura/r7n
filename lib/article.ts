@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { remark } from "remark";
+import remarkHtml from "remark-html";
 
 export type Article = ArticleMetadata &
   ArticleMatter & {
@@ -44,6 +46,11 @@ export function listArticles(): Array<Article> {
     .filter((article) => {
       return article.date;
     });
+}
+
+export async function renderArticleBody(articleBody: string): Promise<string> {
+  const result = await remark().use(remarkHtml).process(articleBody);
+  return result.toString();
 }
 
 function fileNameToArticleMetadata(
