@@ -8,7 +8,7 @@ export default function Layout({ children }) {
         <title>r7kamura.com</title>
         <meta
           name="description"
-          content="r7kamuraの生活やプログラミングに関するブログ"
+          content="r7kamuraの生活やプログラミングに関するウェブサイト"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -31,16 +31,12 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li>
-              <Link href="/sitemap">
+              <Link href="/about">
                 <a>サイト案内</a>
               </Link>
             </li>
             <li>
-              <a
-                href="https://www.google.com/search?q=site:r7kamura.com"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://www.google.com/search?q=site:r7kamura.com">
                 検索
               </a>
             </li>
