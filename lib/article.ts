@@ -17,11 +17,6 @@ type ArticleMatter = {
   title: string;
 };
 
-type AnyMatter = {
-  content: string;
-  data: ArticleMatter;
-};
-
 const articlesDirectoryPath =
   process.env.ARTICLES_DIRECTORY_PATH || path.join(process.cwd(), "articles");
 
