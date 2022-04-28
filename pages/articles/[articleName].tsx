@@ -15,6 +15,7 @@ const ShowArticle: NextPage<Props> = ({ article }) => {
       </Head>
       <header>
         <Time date={article.date} />
+        <h1>{article.title}</h1>
       </header>
       <div dangerouslySetInnerHTML={{ __html: article.body }}></div>
     </article>

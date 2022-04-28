@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 
 const ShowSiteGuide: NextPage = () => {
   return (
-    <>
+    <article>
       <h1>サイト案内</h1>
       <p>
         このウェブサイトでは、作者の<a href="https://twitter.com/r7kamura">r7kamura</a>が、日々の生活やプログラミングに関する情報を公開しています。
@@ -46,7 +46,7 @@ const ShowSiteGuide: NextPage = () => {
         </a>
         にてご連絡ください。
       </p>
-    </>
+    </article>
   );
 };
 

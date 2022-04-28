@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
 import { type Article, listArticles } from "../lib/article";
 import Time from "../components/Time";
 
@@ -10,8 +9,8 @@ type Props = {
 
 const Home: NextPage<Props> = ({ articles }) => {
   return (
-    <>
-      <ol className={styles.articles}>
+    <section>
+      <ol>
         {articles.map((article) => (
           <li key={article.name}>
             <Time date={article.date} />
@@ -21,7 +20,7 @@ const Home: NextPage<Props> = ({ articles }) => {
           </li>
         ))}
       </ol>
-    </>
+    </section>
   );
 };
 

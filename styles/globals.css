@@ -28,14 +28,57 @@ body {
   word-wrap: break-word;
 }
 
-main,
 nav {
   padding: 2rem;
 }
 
 main {
   background-color: #fff;
+  padding: 3rem 2rem;
 }
+
+nav a {
+  color: inherit;
+}
+
+header nav {
+  font-weight: 700;
+}
+
+footer {
+  font-size: 0.8rem;
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav li + li {
+  display: inline-block;
+}
+
+nav li + li:before {
+  content: "//";
+  padding: 0 1rem;
+}
+
+section ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+time {
+  color: var(--color-light);
+  display: block;
+  font-size: 0.8rem;
+}
+
+/* The followings are mainly for article. */
 
 h1 {
   font-size: 1.5rem;
@@ -108,40 +151,4 @@ blockquote {
   font-style: italic;
   margin: 1rem 0;
   padding-left: 1rem;
-}
-
-time {
-  color: var(--color-light);
-  display: block;
-  font-size: 0.8rem;
-}
-
-nav a {
-  color: inherit;
-}
-
-header nav {
-  font-weight: 700;
-}
-
-footer {
-  font-size: 0.8rem;
-}
-
-nav ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-nav li {
-  display: inline-block;
-}
-
-nav li + li {
-  display: inline-block;
-}
-
-nav li + li:before {
-  content: "//";
-  padding: 0 1rem;
 }
