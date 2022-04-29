@@ -3,6 +3,8 @@ import type { NextPage } from "next";
 import { type Article, listArticles } from "../lib/article";
 import Time from "../components/Time";
 import CustomHead from "../components/CustomHead";
+import { generateFeed } from "../lib/feed";
+import fs from "fs";
 
 type Props = {
   articles: Array<Article>;
@@ -42,6 +44,10 @@ const Home: NextPage<Props> = ({ articles }) => {
 export default Home;
 
 export async function getStaticProps() {
+  if (process.env.ON_NEXT_BUILD) {
+    fs.writeFileSync("public/feed.xml", await generateFeed());
+  }
+
   return {
     props: {
       articles: listArticles(),

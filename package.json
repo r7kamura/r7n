@@ -8,7 +8,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "export": "next build && next export",
+    "export": "ON_NEXT_BUILD=true next build && next export",
     "lint:next": "next lint",
     "lint:prettier": "prettier --write .",
     "lint": "npm run lint:next && npm run lint:prettier",
