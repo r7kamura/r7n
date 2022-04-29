@@ -8,7 +8,7 @@ export default function Layout({ children }) {
         <title>r7kamura.com</title>
         <meta
           name="description"
-          content="r7kamuraの生活やプログラミングに関するウェブサイト"
+          content="r7kamuraが生活やプログラミングに関する情報を共有するウェブサイト"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -68,6 +68,10 @@ nav li + li:before {
   padding: 0 1rem;
 }
 
+section + section {
+  margin-top: 3rem;
+}
+
 section ol {
   list-style-type: none;
   padding-left: 0;
