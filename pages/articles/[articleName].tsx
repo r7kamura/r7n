@@ -1,29 +1,30 @@
 import Head from "next/head";
 import type { NextPage } from "next";
 import {
-  type Article,
+  type RenderedArticle,
   getArticle,
   listArticles,
-  renderArticleBody,
+  renderArticle,
 } from "../../lib/article";
 import Time from "../../components/Time";
 
 type Props = {
-  article: Article;
-  renderedBody: string;
+  renderedArticle: RenderedArticle;
 };
 
-const ShowArticle: NextPage<Props> = ({ article, renderedBody }) => {
+const ShowArticle: NextPage<Props> = ({ renderedArticle }) => {
   return (
     <article>
       <Head>
-        <title>{article.title}</title>
+        <title>{renderedArticle.title}</title>
       </Head>
       <header>
-        <Time date={article.date} />
-        <h1>{article.title}</h1>
+        <Time date={renderedArticle.date} />
+        <h1>{renderedArticle.title}</h1>
       </header>
-      <div dangerouslySetInnerHTML={{ __html: renderedBody }}></div>
+      <div
+        dangerouslySetInnerHTML={{ __html: renderedArticle.renderedBody }}
+      ></div>
     </article>
   );
 };
@@ -46,11 +47,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const article = getArticle({ articleName: params.articleName });
-  const renderedBody = await renderArticleBody(article.body);
+  const renderedArticle = await renderArticle(article);
   return {
     props: {
-      article,
-      renderedBody,
+      renderedArticle,
     },
   };
 }

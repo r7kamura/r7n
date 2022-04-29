@@ -9,6 +9,11 @@ export type Article = ArticleMetadata &
     body: string;
   };
 
+export type RenderedArticle = Article & {
+  description: string;
+  renderedBody: string;
+};
+
 type ArticleMetadata = {
   date: string;
   name: string;
@@ -26,7 +31,7 @@ export function getArticle({ articleName }: { articleName: string }): Article {
   const fileContent = readArticle(articleName);
   const articleMatter = matter(fileContent);
   const articleMetadata = fileNameToArticleMetadata(
-    articleName
+    `${articleName}.md`
   ) as ArticleMetadata;
   return {
     ...articleMetadata,
@@ -50,14 +55,27 @@ export function listArticles(): Array<Article> {
     })
     .filter((fileName) => fileNameToArticleMetadata(fileName))
     .map((fileName) => {
-      return getArticle({ articleName: fileName });
+      const articleName = path.basename(fileName, ".md");
+      return getArticle({ articleName });
     })
     .filter((article) => {
       return article.date;
     });
 }
 
-export async function renderArticleBody(articleBody: string): Promise<string> {
+export async function renderArticle(
+  article: Article
+): Promise<RenderedArticle> {
+  const renderedBody = await renderArticleBody(article.body);
+  const description = "dummy";
+  return {
+    ...article,
+    description,
+    renderedBody,
+  };
+}
+
+async function renderArticleBody(articleBody: string): Promise<string> {
   const result = await remark().use(remarkHtml).process(articleBody);
   return result.toString();
 }
@@ -65,7 +83,7 @@ export async function renderArticleBody(articleBody: string): Promise<string> {
 function fileNameToArticleMetadata(
   fileName: string
 ): ArticleMetadata | undefined {
-  const matchArray = fileName.match(/^(\d{4}-\d{2}-\d{2})-(.+)/);
+  const matchArray = fileName.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
   if (matchArray) {
     const date = matchArray[1];
     const slug = matchArray[2];
@@ -78,7 +96,7 @@ function fileNameToArticleMetadata(
   }
 }
 
-function readArticle(name: string): string {
-  const filePath = path.join(articlesDirectoryPath, name);
+function readArticle(articleName: string): string {
+  const filePath = path.join(articlesDirectoryPath, `${articleName}.md`);
   return fs.readFileSync(filePath, "utf8");
 }

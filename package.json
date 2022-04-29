@@ -24,12 +24,14 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "remark": "^14.0.2",
-    "remark-html": "^15.0.1"
+    "remark-html": "^15.0.1",
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "17.0.29",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.0",
+    "@types/rss": "0.0.29",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
