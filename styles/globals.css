@@ -23,7 +23,7 @@ html {
 
 body {
   background-color: #f8f9fa;
-  margin: 0 auto;
+  margin: 0 auto !important; /* !important is to override `margin: 0` on default 404 page. */
   max-width: 40rem;
   word-wrap: break-word;
 }
