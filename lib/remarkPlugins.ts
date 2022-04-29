@@ -22,3 +22,12 @@ export function extractDescription() {
     }
   };
 }
+
+export function extractImageUrl() {
+  return (tree: any, file: any) => {
+    const image = select("image", tree) as any;
+    if (image) {
+      file.data.imageUrl = image.url;
+    }
+  };
+}

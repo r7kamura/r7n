@@ -1,4 +1,4 @@
-import Head from "next/head";
+import CustomHead from "../../components/CustomHead";
 import type { NextPage } from "next";
 import {
   type RenderedArticle,
@@ -15,11 +15,12 @@ type Props = {
 const ShowArticle: NextPage<Props> = ({ renderedArticle }) => {
   return (
     <article>
-      <Head>
-        <title>{renderedArticle.title}</title>
-        <meta property="description" content={renderedArticle.description} />
-        <meta property="og:description" content={renderedArticle.description} />
-      </Head>
+      <CustomHead
+        description={renderedArticle.description}
+        imageUrl={renderedArticle.imageUrl}
+        ogType="article"
+        title={renderedArticle.title}
+      />
       <header>
         <Time date={renderedArticle.date} />
         <h1>{renderedArticle.title}</h1>

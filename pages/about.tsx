@@ -1,10 +1,18 @@
 import Link from "next/link";
 import type { NextPage } from "next";
+import CustomHead from "../components/CustomHead";
+
+const pageTitle = "サイト案内";
 
 const ShowSiteGuide: NextPage = () => {
   return (
     <article>
-      <h1>サイト案内</h1>
+      <CustomHead
+        description="このサイトについて。"
+        ogType="article"
+        title={pageTitle}
+      />
+      <h1>{pageTitle}</h1>
       <p>
         r7kamura.comは、作者の
         <a href="https://twitter.com/r7kamura">r7kamura</a>

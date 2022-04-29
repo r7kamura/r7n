@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import { type Article, listArticles } from "../lib/article";
 import Time from "../components/Time";
+import CustomHead from "../components/CustomHead";
 
 type Props = {
   articles: Array<Article>;
@@ -10,6 +11,11 @@ type Props = {
 const Home: NextPage<Props> = ({ articles }) => {
   return (
     <>
+      <CustomHead
+        description="r7kamuraが生活やプログラミングに関する情報を共有するウェブサイト"
+        ogType="website"
+        title="r7kamura.com"
+      />
       <section>
         <p>
           r7kamura.comは、作者の

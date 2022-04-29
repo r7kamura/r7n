@@ -3,17 +3,18 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
-import { convertAmazonLink, extractDescription } from "./remarkPlugins";
+import {
+  convertAmazonLink,
+  extractDescription,
+  extractImageUrl,
+} from "./remarkPlugins";
 
 export type Article = ArticleMetadata &
   ArticleMatter & {
     body: string;
   };
 
-export type RenderedArticle = Article & {
-  description: string;
-  renderedBody: string;
-};
+export type RenderedArticle = Article & RenderResult;
 
 type ArticleMetadata = {
   date: string;
@@ -23,6 +24,12 @@ type ArticleMetadata = {
 
 type ArticleMatter = {
   title: string;
+};
+
+type RenderResult = {
+  description: string | null;
+  imageUrl: string | null;
+  renderedBody: string;
 };
 
 const articlesDirectoryPath =
@@ -67,24 +74,24 @@ export function listArticles(): Array<Article> {
 export async function renderArticle(
   article: Article
 ): Promise<RenderedArticle> {
-  const { description, renderedBody } = await renderArticleBody(article.body);
+  const renderResult = await renderArticleBody(article.body);
   return {
     ...article,
-    description,
-    renderedBody,
+    ...renderResult,
   };
 }
 
-async function renderArticleBody(
-  articleBody: string
-): Promise<{ description: string; renderedBody: string }> {
+async function renderArticleBody(articleBody: string): Promise<RenderResult> {
   const result = await remark()
     .use(remarkHtml)
-    .use(convertAmazonLink)
+    .use(convertAmazonLink as any)
     .use(extractDescription as any)
+    .use(extractImageUrl as any)
     .process(articleBody);
+  const data = result.data as any;
   return {
-    description: (result.data.description as string) || "",
+    description: data.description || null,
+    imageUrl: data.imageUrl || null,
     renderedBody: result.toString(),
   };
 }

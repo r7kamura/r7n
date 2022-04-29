@@ -5,12 +5,13 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>r7kamura.com</title>
-        <meta
-          name="description"
-          content="r7kamuraが生活やプログラミングに関する情報を共有するウェブサイト"
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="r7kamura.com"
+          href="/opensearch.xml"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
         <nav>

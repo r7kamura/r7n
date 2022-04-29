@@ -1,5 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
+import settings from "./settings";
 
 module.exports = {
-  siteUrl: "https://r7kamura.com",
+  siteUrl: settings.siteBaseUrl,
 };
