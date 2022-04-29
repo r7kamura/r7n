@@ -73,6 +73,10 @@ section ol {
   padding-left: 0;
 }
 
+section li + li {
+  margin-top: 2rem;
+}
+
 time {
   color: var(--color-light);
   display: block;
