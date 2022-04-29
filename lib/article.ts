@@ -38,7 +38,7 @@ export function getArticle({ articleName }: { articleName: string }): Article {
     ...articleMetadata,
     body: articleMatter.content,
     name: articleName,
-    ...(articleMatter.data as ArticleMatter),
+    title: articleMatter.data.title,
   };
 }
 
