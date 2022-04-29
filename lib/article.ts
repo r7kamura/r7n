@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { convertAmazonLink } from "./remarkPlugins";
 
 export type Article = ArticleMetadata &
   ArticleMatter & {
@@ -76,7 +77,10 @@ export async function renderArticle(
 }
 
 async function renderArticleBody(articleBody: string): Promise<string> {
-  const result = await remark().use(remarkHtml).process(articleBody);
+  const result = await remark()
+    .use(remarkHtml)
+    .use(convertAmazonLink)
+    .process(articleBody);
   return result.toString();
 }
 
