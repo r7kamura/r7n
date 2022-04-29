@@ -17,6 +17,8 @@ const ShowArticle: NextPage<Props> = ({ renderedArticle }) => {
     <article>
       <Head>
         <title>{renderedArticle.title}</title>
+        <meta property="description" content={renderedArticle.description} />
+        <meta property="og:description" content={renderedArticle.description} />
       </Head>
       <header>
         <Time date={renderedArticle.date} />

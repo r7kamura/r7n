@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
-import { convertAmazonLink } from "./remarkPlugins";
+import { convertAmazonLink, extractDescription } from "./remarkPlugins";
 
 export type Article = ArticleMetadata &
   ArticleMatter & {
@@ -67,8 +67,7 @@ export function listArticles(): Array<Article> {
 export async function renderArticle(
   article: Article
 ): Promise<RenderedArticle> {
-  const renderedBody = await renderArticleBody(article.body);
-  const description = "dummy";
+  const { description, renderedBody } = await renderArticleBody(article.body);
   return {
     ...article,
     description,
@@ -76,12 +75,18 @@ export async function renderArticle(
   };
 }
 
-async function renderArticleBody(articleBody: string): Promise<string> {
+async function renderArticleBody(
+  articleBody: string
+): Promise<{ description: string; renderedBody: string }> {
   const result = await remark()
     .use(remarkHtml)
     .use(convertAmazonLink)
+    .use(extractDescription as any)
     .process(articleBody);
-  return result.toString();
+  return {
+    description: (result.data.description as string) || "",
+    renderedBody: result.toString(),
+  };
 }
 
 function fileNameToArticleMetadata(

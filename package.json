@@ -26,6 +26,7 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "rss": "^1.2.2",
+    "unist-util-select": "^4.0.1",
     "unist-util-visit": "^4.1.0"
   },
   "devDependencies": {
