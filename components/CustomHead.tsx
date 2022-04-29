@@ -29,7 +29,7 @@ export default function CustomHead({
       <meta name="og:description" content={description || ""} />
       <meta
         name="og:image"
-        content={imageUrl || "${settings.siteBaseUrl}/default_og_image.jpg"}
+        content={imageUrl || `${settings.siteBaseUrl}/default_og_image.jpg`}
       />
       <meta
         property="twitter:card"
