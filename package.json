@@ -8,11 +8,10 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "export": "ON_NEXT_BUILD=true next build && next export",
+    "export": "ON_NEXT_BUILD=true next build && next-sitemap && next export",
     "lint:next": "next lint",
     "lint:prettier": "prettier --write .",
     "lint": "npm run lint:next && npm run lint:prettier",
-    "postbuild": "next-sitemap",
     "start": "next start"
   },
   "dependencies": {
