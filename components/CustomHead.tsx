@@ -17,16 +17,19 @@ export default function CustomHead({
   ogType,
   title,
 }: Props) {
+  const canonicalUrl = `${settings.siteBaseUrl}${useRouter().asPath}`;
   return (
     <Head>
       <title>{title}</title>
       <link
-        href={`${settings.siteBaseUrl}${useRouter().asPath}`}
+        href={canonicalUrl}
         rel="canonical"
       ></link>
       <meta name="description" content={description || ""} />
-      <meta name="og:description" content={ogType} />
       <meta name="og:description" content={description || ""} />
+      <meta name="og:title" content={title} />
+      <meta name="og:type" content={ogType} />
+      <meta name="og:url" content={canonicalUrl} />
       <meta
         name="og:image"
         content={imageUrl || `${settings.siteBaseUrl}/default_og_image.jpg`}
