@@ -19,7 +19,7 @@ export type RenderedArticle = Article & RenderResult;
 type ArticleMetadata = {
   date: string;
   name: string;
-  slug: string;
+  slug: string | null;
 };
 
 type ArticleMatter = {
@@ -99,11 +99,11 @@ async function renderArticleBody(articleBody: string): Promise<RenderResult> {
 function fileNameToArticleMetadata(
   fileName: string
 ): ArticleMetadata | undefined {
-  const matchArray = fileName.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
+  const matchArray = fileName.match(/^((\d{4}-\d{2}-\d{2})(?:-(.+))?)\.md$/);
   if (matchArray) {
-    const date = matchArray[1];
-    const slug = matchArray[2];
-    const name = [date, slug].join("-");
+    const name = matchArray[1];
+    const date = matchArray[2];
+    const slug = matchArray[3] || null;
     return {
       date,
       name,
