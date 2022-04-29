@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-import settings from "./settings";
+const settings = require("./settings");
 
 module.exports = {
   siteUrl: settings.siteBaseUrl,
