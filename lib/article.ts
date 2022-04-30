@@ -16,6 +16,11 @@ export type Article = ArticleMetadata &
 
 export type RenderedArticle = Article & RenderResult;
 
+type ArticleFile = {
+  content: Buffer;
+  path: string;
+}
+
 type ArticleMetadata = {
   date: string;
   name: string;
@@ -32,42 +37,39 @@ type RenderResult = {
   renderedBody: string;
 };
 
-const articlesDirectoryPath =
-  process.env.ARTICLES_DIRECTORY_PATH || path.join(process.cwd(), "articles");
+const articlesDirectoryPaths =
+  process.env.ARTICLES_DIRECTORY_PATHS ? process.env.ARTICLES_DIRECTORY_PATHS.split(",") : [path.join(process.cwd(), "articles")];
 
 export function getArticle({ articleName }: { articleName: string }): Article {
-  const fileContent = readArticle(articleName);
-  const articleMatter = matter(fileContent);
-  const articleMetadata = fileNameToArticleMetadata(
-    `${articleName}.md`
-  ) as ArticleMetadata;
-  return {
-    ...articleMetadata,
-    body: articleMatter.content,
-    name: articleName,
-    title: articleMatter.data.title,
-  };
+  const articleFile = findArticleFile({ articleName }) as ArticleFile;
+  return articleFileToArticle(articleFile);
 }
 
 export function listArticles(): Array<Article> {
-  const fileNames = fs.readdirSync(articlesDirectoryPath);
-  return fileNames
-    .sort((a: string, b: string) => {
-      if (a < b) {
+  return articlesDirectoryPaths.flatMap((directoryPath) => {
+    return fs.readdirSync(directoryPath).map((fileName) => {
+      const filePath = path.join(directoryPath, fileName);
+      const content = fs.readFileSync(filePath);
+      return {
+        content,
+        path: filePath,
+      };
+    });
+  })
+    .map((articleFile) => {
+      return articleFileToArticle(articleFile);
+    })
+    .filter((article) => {
+      return article.date;
+    })
+    .sort((a, b) => {
+      if (a.name < b.name) {
         return 1;
-      } else if (a > b) {
+      } else if (a.name > b.name) {
         return -1;
       } else {
         return 0;
       }
-    })
-    .filter((fileName) => fileNameToArticleMetadata(fileName))
-    .map((fileName) => {
-      const articleName = path.basename(fileName, ".md");
-      return getArticle({ articleName });
-    })
-    .filter((article) => {
-      return article.date;
     });
 }
 
@@ -96,10 +98,10 @@ async function renderArticleBody(articleBody: string): Promise<RenderResult> {
   };
 }
 
-function fileNameToArticleMetadata(
-  fileName: string
+function articleNameToArticleMetadata(
+  articleName: string
 ): ArticleMetadata | undefined {
-  const matchArray = fileName.match(/^((\d{4}-\d{2}-\d{2})(?:-(.+))?)\.md$/);
+  const matchArray = articleName.match(/^((\d{4}-\d{2}-\d{2})(?:-(.+))?)$/);
   if (matchArray) {
     const name = matchArray[1];
     const date = matchArray[2];
@@ -112,7 +114,32 @@ function fileNameToArticleMetadata(
   }
 }
 
-function readArticle(articleName: string): string {
-  const filePath = path.join(articlesDirectoryPath, `${articleName}.md`);
-  return fs.readFileSync(filePath, "utf8");
+function findArticleFile({ articleName }: { articleName: string }): ArticleFile | undefined {
+  let result;
+  articlesDirectoryPaths.find((directoryPath) => {
+    const filePath = path.join(directoryPath, `${articleName}.md`);
+    try {
+      const content = fs.readFileSync(filePath, "utf8");
+      result = {
+        content,
+        path: filePath,
+      }
+      return true;
+    } catch (error) {
+      return false;
+    }
+  });
+  return result;
+}
+
+function articleFileToArticle(articleFile: ArticleFile): Article {
+  const articleMatter = matter(articleFile.content);
+  const articleName = path.basename(articleFile.path, ".md");
+  const articleMetadata = articleNameToArticleMetadata(articleName) as ArticleMetadata;
+  return {
+    ...articleMetadata,
+    body: articleMatter.content,
+    name: articleName,
+    title: articleMatter.data.title,
+  };
 }
