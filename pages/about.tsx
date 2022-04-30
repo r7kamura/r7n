@@ -30,7 +30,7 @@ const ShowSiteGuide: NextPage = () => {
       <p>
         <a href="https://github.com/r7kamura/r7kamura.com">GitHub</a>
         でウェブサイトのソースコードを公開しています。
-        作者の好みが移ろえば、実装言語も変わります。最初はRubyで、次はRust、現在はJavaScriptで実装されています。
+        作者の好みに応じて、実装言語がよく変わります。最初はRubyで、次はRust、現在はJavaScriptで実装されています。
       </p>
       <p>
         <a href="https://github.com/sponsors/r7kamura">GitHub Sponsors</a>
