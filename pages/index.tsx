@@ -14,15 +14,15 @@ const Home: NextPage<Props> = ({ articles }) => {
   return (
     <>
       <CustomHead
-        description="r7kamuraが生活やプログラミングに関する情報を共有するウェブサイト"
+        description="r7kamuraの、日々の生活やプログラミングに関する情報を共有する場"
         ogType="website"
         title="r7kamura.com"
       />
       <section>
         <p>
-          r7kamura.comは、作者の
+          このウェブサイトでは、作者の
           <a href="https://twitter.com/r7kamura">r7kamura</a>
-          が、日々の生活やプログラミングに関する情報を共有するウェブサイトです。
+          が、日々の生活やプログラミングに関する情報を共有しています。
         </p>
       </section>
       <section>

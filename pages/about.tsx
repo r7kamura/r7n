@@ -8,15 +8,15 @@ const ShowSiteGuide: NextPage = () => {
   return (
     <article>
       <CustomHead
-        description="このサイトについて。"
+        description="このウェブサイトについて"
         ogType="article"
         title={pageTitle}
       />
       <h1>{pageTitle}</h1>
       <p>
-        r7kamura.comは、作者の
+        このウェブサイトでは、作者の
         <a href="https://twitter.com/r7kamura">r7kamura</a>
-        が、日々の生活やプログラミングに関する情報を共有するウェブサイトです。
+        が、日々の生活やプログラミングに関する情報を共有しています。
       </p>
       <h2>案内</h2>
       <p>
