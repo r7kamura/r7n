@@ -1,5 +1,5 @@
 import { visit } from "unist-util-visit";
-import { select } from "unist-util-select";
+import { select, selectAll } from "unist-util-select";
 
 export function convertAmazonLink() {
   return (tree: any) => {
@@ -13,9 +13,14 @@ export function convertAmazonLink() {
 
 export function extractDescription() {
   return (tree: any, file: any) => {
-    const firstParagraphText = select("paragraph text", tree) as any;
-    if (firstParagraphText && firstParagraphText.value) {
-      const segments = firstParagraphText.value.split("。");
+    const texts = selectAll("text", tree.children[0]);
+    const text = texts
+      .map((node: any) => {
+        return node.value;
+      })
+      .join("");
+    if (text) {
+      const segments = text.split("。");
       if (segments.length >= 2) {
         file.data.description = `${segments[0]}。`.substring(0, 140);
       }

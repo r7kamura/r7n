@@ -21,10 +21,7 @@ export default function CustomHead({
   return (
     <Head>
       <title>{title}</title>
-      <link
-        href={canonicalUrl}
-        rel="canonical"
-      ></link>
+      <link href={canonicalUrl} rel="canonical"></link>
       <meta name="description" content={description || ""} />
       <meta name="og:description" content={description || ""} />
       <meta name="og:title" content={title} />

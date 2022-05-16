@@ -19,7 +19,7 @@ export type RenderedArticle = Article & RenderResult;
 type ArticleFile = {
   content: Buffer;
   path: string;
-}
+};
 
 type ArticleMetadata = {
   date: string;
@@ -37,8 +37,9 @@ type RenderResult = {
   renderedBody: string;
 };
 
-const articlesDirectoryPaths =
-  process.env.ARTICLES_DIRECTORY_PATHS ? process.env.ARTICLES_DIRECTORY_PATHS.split(",") : [path.join(process.cwd(), "articles")];
+const articlesDirectoryPaths = process.env.ARTICLES_DIRECTORY_PATHS
+  ? process.env.ARTICLES_DIRECTORY_PATHS.split(",")
+  : [path.join(process.cwd(), "articles")];
 
 export function getArticle({ articleName }: { articleName: string }): Article {
   const articleFile = findArticleFile({ articleName }) as ArticleFile;
@@ -46,16 +47,17 @@ export function getArticle({ articleName }: { articleName: string }): Article {
 }
 
 export function listArticles(): Array<Article> {
-  return articlesDirectoryPaths.flatMap((directoryPath) => {
-    return fs.readdirSync(directoryPath).map((fileName) => {
-      const filePath = path.join(directoryPath, fileName);
-      const content = fs.readFileSync(filePath);
-      return {
-        content,
-        path: filePath,
-      };
-    });
-  })
+  return articlesDirectoryPaths
+    .flatMap((directoryPath) => {
+      return fs.readdirSync(directoryPath).map((fileName) => {
+        const filePath = path.join(directoryPath, fileName);
+        const content = fs.readFileSync(filePath);
+        return {
+          content,
+          path: filePath,
+        };
+      });
+    })
     .map((articleFile) => {
       return articleFileToArticle(articleFile);
     })
@@ -114,7 +116,11 @@ function articleNameToArticleMetadata(
   }
 }
 
-function findArticleFile({ articleName }: { articleName: string }): ArticleFile | undefined {
+function findArticleFile({
+  articleName,
+}: {
+  articleName: string;
+}): ArticleFile | undefined {
   let result;
   articlesDirectoryPaths.find((directoryPath) => {
     const filePath = path.join(directoryPath, `${articleName}.md`);
@@ -123,7 +129,7 @@ function findArticleFile({ articleName }: { articleName: string }): ArticleFile 
       result = {
         content,
         path: filePath,
-      }
+      };
       return true;
     } catch (error) {
       return false;
@@ -135,7 +141,9 @@ function findArticleFile({ articleName }: { articleName: string }): ArticleFile 
 function articleFileToArticle(articleFile: ArticleFile): Article {
   const articleMatter = matter(articleFile.content);
   const articleName = path.basename(articleFile.path, ".md");
-  const articleMetadata = articleNameToArticleMetadata(articleName) as ArticleMetadata;
+  const articleMetadata = articleNameToArticleMetadata(
+    articleName
+  ) as ArticleMetadata;
   return {
     ...articleMetadata,
     body: articleMatter.content,
