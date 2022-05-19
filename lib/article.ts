@@ -7,6 +7,7 @@ import {
   convertAmazonLink,
   extractDescription,
   extractImageUrl,
+  transformTitledImageIntoFigure,
 } from "./remarkPlugins";
 
 export type Article = ArticleMetadata &
@@ -91,6 +92,7 @@ async function renderArticleBody(articleBody: string): Promise<RenderResult> {
     .use(convertAmazonLink as any)
     .use(extractDescription as any)
     .use(extractImageUrl as any)
+    .use(transformTitledImageIntoFigure as any)
     .process(articleBody);
   const data = result.data as any;
   return {

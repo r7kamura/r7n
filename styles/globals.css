@@ -122,6 +122,20 @@ img {
   max-width: 100%;
 }
 
+figure {
+  margin: 2rem 0;
+}
+
+figure img {
+  margin-bottom: 0.5rem;
+}
+
+figcaption {
+  color: var(--color-light);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 p {
   margin-top: 1rem;
 }
