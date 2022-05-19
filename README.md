@@ -27,3 +27,12 @@ Build static files into ./out directory.
 ```
 npm run export
 ```
+
+## Naming
+
+```
+r 7 n
+^^^ ^
+|   `-- Next.js
+`------ r7kamura.com
+```
