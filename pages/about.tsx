@@ -6,7 +6,7 @@ const pageTitle = "サイト案内";
 
 const ShowSiteGuide: NextPage = () => {
   return (
-    <article>
+    <article className="markdown">
       <CustomHead
         description="このウェブサイトについて"
         ogType="article"
