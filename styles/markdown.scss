@@ -17,16 +17,7 @@
   }
 
   hr {
-    border-width: 0px;
-    font-size: 1rem;
     margin: 4rem 0;
-    text-align: center;
-  }
-
-  hr:before {
-    color: var(#666);
-    content: "❧";
-    font-size: 1.5rem;
   }
 
   img {
@@ -45,9 +36,11 @@
   }
 
   figcaption {
-    color: var(#666);
+    color: #666;
     font-size: 0.9rem;
     text-align: center;
+
+    @apply dark:text-gray-300;
   }
 
   p,
@@ -69,6 +62,8 @@
     font-size: 0.8rem;
     background-color: #eee;
     padding: 0.2rem 0.4rem;
+
+    @apply dark:bg-gray-800;
   }
 
   pre code {
@@ -84,6 +79,8 @@
     margin: 2rem 0;
     padding: 0.75rem;
     overflow-x: auto;
+
+    @apply dark:bg-gray-800;
   }
 
   blockquote {

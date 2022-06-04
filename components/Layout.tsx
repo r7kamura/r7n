@@ -4,8 +4,9 @@ import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 dark:text-gray-100">
       <Head>
+        <meta name="color-scheme" content="light dark"/>
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link
           rel="search"
@@ -18,14 +19,14 @@ export default function Layout({ children }: { children: ReactNode }) {
         <nav>
           <p>
             <Link href="/">
-              <a className="font-bold text-gray-900 visited:text-gray-900">
+              <a className="font-bold text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
                 r7kamura.com
               </a>
             </Link>
           </p>
         </nav>
       </header>
-      <main className="container mx-auto max-w-2xl px-8 py-12 bg-white shadow-md">
+      <main className="container mx-auto max-w-2xl px-8 py-12 shadow-md bg-white dark:bg-gray-900">
         {children}
       </main>
       <footer className="container mx-auto max-w-2xl px-8 py-12 text-sm">
@@ -48,7 +49,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               return (
                 <li key={url}>
                   <Link href={url}>
-                    <a className="text-gray-900 visited:text-gray-900">
+                    <a className="text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
                       {text}
                     </a>
                   </Link>

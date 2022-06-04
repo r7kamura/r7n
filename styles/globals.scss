@@ -20,15 +20,18 @@ html {
 
 body {
   line-height: 1.8;
-  margin: 0 auto !important; /* !important is to override `margin: 0` on default 404 page. */
   word-wrap: break-word;
 }
 
 a {
   color: rgb(0, 0, 238);
-  text-decoration: underline;
-}
 
-a:visited {
-  color: rgb(85, 26, 139);
+  @apply underline;
+  @apply dark:text-blue-400;
+
+  &:visited {
+    color: rgb(85, 26, 139);
+
+    @apply dark:text-violet-300;
+  }
 }
