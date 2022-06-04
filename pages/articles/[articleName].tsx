@@ -14,7 +14,7 @@ type Props = {
 
 const ShowArticle: NextPage<Props> = ({ renderedArticle }) => {
   return (
-    <article>
+    <article className="markdown">
       <CustomHead
         description={renderedArticle.description}
         imageUrl={renderedArticle.imageUrl}

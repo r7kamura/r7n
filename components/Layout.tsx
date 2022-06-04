@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <div className="bg-gray-50 min-h-screen">
       <Head>
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link
@@ -14,37 +14,50 @@ export default function Layout({ children }: { children: ReactNode }) {
           href="/opensearch.xml"
         />
       </Head>
-      <header>
+      <header className="container mx-auto max-w-2xl px-8 py-12">
         <nav>
           <p>
             <Link href="/">
-              <a>r7kamura.com</a>
+              <a className="font-bold text-gray-900 visited:text-gray-900">
+                r7kamura.com
+              </a>
             </Link>
           </p>
         </nav>
       </header>
-      <main>{children}</main>
-      <footer>
+      <main className="container mx-auto max-w-2xl px-8 py-12 bg-white shadow-md">
+        {children}
+      </main>
+      <footer className="container mx-auto max-w-2xl px-8 py-12 text-sm">
         <nav>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>ホーム</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <a>サイト案内</a>
-              </Link>
-            </li>
-            <li>
-              <a href="https://www.google.com/search?q=site:r7kamura.com">
-                検索
-              </a>
-            </li>
+          <ul className="flex flex-row gap-6 justify-center">
+            {[
+              {
+                url: "/",
+                text: "ホーム",
+              },
+              {
+                url: "/about",
+                text: "サイト案内",
+              },
+              {
+                url: "https://www.google.com/search?q=site:r7kamura.com",
+                text: "検索",
+              },
+            ].map(({ text, url }) => {
+              return (
+                <li key={url}>
+                  <Link href={url}>
+                    <a className="text-gray-900 visited:text-gray-900">
+                      {text}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </footer>
-    </>
+    </div>
   );
 }

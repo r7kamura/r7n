@@ -25,8 +25,8 @@ const Home: NextPage<Props> = ({ articles }) => {
           が、日々の生活やプログラミングに関する情報を共有しています。
         </p>
       </section>
-      <section>
-        <ol>
+      <section className="mt-12">
+        <ol className="flex flex-col gap-12">
           {articles.map((article) => (
             <li key={article.name}>
               <Time date={article.date} />
