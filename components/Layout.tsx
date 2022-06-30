@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-800 dark:text-gray-100">
       <Head>
-        <meta name="color-scheme" content="light dark"/>
+        <meta name="color-scheme" content="light dark" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link
           rel="search"
