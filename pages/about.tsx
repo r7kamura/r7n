@@ -2,23 +2,37 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import CustomHead from "../components/CustomHead";
 
-const pageTitle = "サイト案内";
+const pageTitle = "このサイトについて";
 
 const ShowSiteGuide: NextPage = () => {
   return (
     <article className="markdown">
       <CustomHead
-        description="このウェブサイトについて"
+        description="このサイトについて"
         ogType="article"
         title={pageTitle}
       />
       <h1>{pageTitle}</h1>
       <p>
-        このウェブサイトでは、作者の
+        r7kamura.comは、日々の生活やプログラミングに関する情報を発信する、
         <a href="https://twitter.com/r7kamura">r7kamura</a>
-        が、日々の生活やプログラミングに関する情報を共有しています。
+        のウェブサイトです。
       </p>
-      <h2>案内</h2>
+      <h2>作者情報</h2>
+      <p>
+        r7kamuraという名前で活動しています。この名前は、小学生の頃に親からメールアドレスをもらったときに付けました。発音するときは「あーるなかむら」、または「なかむら」と呼んでください。
+      </p>
+      <p>
+        1989年に生まれ、高校の頃からプログラミングに興味を持ち、大学で情報工学を学び、幾つかの企業での業務経験を経て、現在はフリーランスとして働いています。
+        ウェブサービス開発のフロントエンド・バックエンド共に10年以上の実務経験があります。現在は技術基盤的な部分に興味を持ち、開発体験向上のための仕事に注力しています。
+      </p>
+      <p>
+        ご連絡の際は、<a href="https://twitter.com/r7kamura">Twitter</a>
+        または
+        <a href="mailto:r7kamura@gmail.com">メール</a>
+        にてご連絡ください。
+      </p>
+      <h2>ご案内</h2>
       <p>
         <Link href="/feed.xml">
           <a>RSS</a>
@@ -49,20 +63,6 @@ const ShowSiteGuide: NextPage = () => {
           ほしい物リスト
         </a>
         を公開しています。
-      </p>
-      <h2>作者</h2>
-      <p>
-        r7kamuraという名前で活動しています。この名前は、小学生の頃に親からメールアドレスをもらったときに付けました。発音するときは「あーるなかむら」、または「なかむら」と呼んでください。
-      </p>
-      <p>
-        1989年に生まれ、高校の頃からプログラミングに興味を持ち、大学で情報工学を学び、幾つかの企業での業務経験を経て、現在はフリーランスとして働いています。
-      </p>
-      <h2>連絡先</h2>
-      <p>
-        ご連絡の際は、<a href="https://twitter.com/r7kamura">Twitter</a>
-        または
-        <a href="mailto:r7kamura@gmail.com">メール</a>
-        にてご連絡ください。
       </p>
     </article>
   );
