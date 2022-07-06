@@ -29,21 +29,21 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main className="container mx-auto max-w-2xl px-8 py-12 shadow-md bg-white dark:bg-gray-900">
         {children}
       </main>
-      <footer className="container mx-auto max-w-2xl px-8 py-12 text-sm">
+      <footer className="container mx-auto max-w-2xl px-8 py-12">
         <nav>
-          <ul className="flex flex-row gap-6 justify-center">
+          <ul className="list-disc ml-4">
             {[
               {
                 url: "/",
                 text: "ホーム",
               },
               {
-                url: "/about",
-                text: "サイト案内",
-              },
-              {
                 url: "https://www.google.com/search?q=site:r7kamura.com",
                 text: "検索",
+              },
+              {
+                url: "/about",
+                text: "このサイトについて",
               },
             ].map(({ text, url }) => {
               return (
