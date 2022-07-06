@@ -38,10 +38,6 @@ export default function Layout({ children }: { children: ReactNode }) {
                 text: "ホーム",
               },
               {
-                url: "https://www.google.com/search?q=site:r7kamura.com",
-                text: "検索",
-              },
-              {
                 url: "/about",
                 text: "このサイトについて",
               },
