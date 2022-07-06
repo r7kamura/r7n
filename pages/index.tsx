@@ -41,7 +41,7 @@ const Home: NextPage<Props> = ({ articles }) => {
         </ol>
         <p className="mt-20">
           <Link href="/articles">
-            <a>&raquo; すべての記事一覧へ</a>
+            <a className="before:content-['»_']">すべての記事一覧へ</a>
           </Link>
         </p>
       </section>
