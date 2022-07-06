@@ -38,6 +38,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                 text: "ホーム",
               },
               {
+                url: "/articles",
+                text: "記事一覧",
+              },
+              {
                 url: "/about",
                 text: "このサイトについて",
               },

@@ -1,13 +1,17 @@
 import Link from "next/link";
 import type { NextPage } from "next";
-import { type Article, listArticles } from "../lib/article";
+import {
+  listArticles,
+  renderArticle,
+  type RenderedArticle,
+} from "../lib/article";
 import Time from "../components/Time";
 import CustomHead from "../components/CustomHead";
 import { generateFeed } from "../lib/feed";
 import fs from "fs";
 
 type Props = {
-  articles: Array<Article>;
+  articles: Array<RenderedArticle>;
 };
 
 const Home: NextPage<Props> = ({ articles }) => {
@@ -20,7 +24,7 @@ const Home: NextPage<Props> = ({ articles }) => {
       />
       <section>
         <p>
-          日々の生活やプログラミングに関する情報を発信する、r7kamuraのウェブサイト。
+          r7kamura.comは、日々の生活やプログラミングに関する情報を発信する、r7kamuraのウェブサイトです。
         </p>
       </section>
       <section className="mt-12">
@@ -31,9 +35,15 @@ const Home: NextPage<Props> = ({ articles }) => {
               <Link href={`/articles/${article.name}`}>
                 <a>{article.title}</a>
               </Link>
+              <p>{article.description}</p>
             </li>
           ))}
         </ol>
+        <p className="mt-20">
+          <Link href="/articles">
+            <a>&raquo; すべての記事一覧へ</a>
+          </Link>
+        </p>
       </section>
     </>
   );
@@ -46,9 +56,17 @@ export async function getStaticProps() {
     fs.writeFileSync("public/feed.xml", await generateFeed());
   }
 
+  let articles: Array<RenderedArticle> = await Promise.all(
+    listArticles()
+      .slice(0, 7)
+      .map(async (article) => {
+        return await renderArticle(article);
+      })
+  );
+
   return {
     props: {
-      articles: listArticles(),
+      articles,
     },
   };
 }
