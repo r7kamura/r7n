@@ -2,20 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 1000px) {
-  html {
-    font-size: 1.6vw;
-  }
-}
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 19.2px;
-  }
-}
-
 html {
   font-family: sans-serif;
+  font-size: calc(1rem + 0.5vw);
 }
 
 body {

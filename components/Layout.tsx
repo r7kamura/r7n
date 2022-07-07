@@ -4,7 +4,7 @@ import { type ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 dark:text-gray-100">
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-900 dark:text-gray-100">
       <Head>
         <meta name="color-scheme" content="light dark" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
@@ -15,8 +15,8 @@ export default function Layout({ children }: { children: ReactNode }) {
           href="/opensearch.xml"
         />
       </Head>
-      <header className="container mx-auto max-w-2xl px-8 py-12">
-        <nav>
+      <header className="bg-gray-50 dark:bg-gray-800">
+        <nav className="container mx-auto max-w-2xl px-8 py-12">
           <p>
             <Link href="/">
               <a className="font-bold text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
@@ -26,10 +26,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           </p>
         </nav>
       </header>
-      <main className="container mx-auto max-w-2xl px-8 py-12 shadow-md bg-white dark:bg-gray-900">
-        {children}
+      <main className="bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto max-w-2xl px-8 py-12">
+          {children}
+        </div>
       </main>
-      <footer className="container mx-auto max-w-2xl px-8 py-12">
+      <footer className="container mx-auto max-w-2xl px-8 py-12 text-sm leading-loose">
         <nav>
           <ul className="list-disc ml-4">
             {[
