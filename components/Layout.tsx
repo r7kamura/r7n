@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         />
       </Head>
       <header className="bg-gray-50 dark:bg-gray-800">
-        <nav className="container mx-auto max-w-2xl px-8 py-12">
+        <nav className="container mx-auto max-w-2xl px-4 py-12">
           <p>
             <Link href="/">
               <a className="font-bold text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
@@ -27,11 +27,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         </nav>
       </header>
       <main className="bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto max-w-2xl px-8 py-12">
+        <div className="container mx-auto max-w-2xl px-4 py-12">
           {children}
         </div>
       </main>
-      <footer className="container mx-auto max-w-2xl px-8 py-12 text-sm leading-loose">
+      <footer className="container mx-auto max-w-2xl px-4 py-12 text-sm leading-loose">
         <nav>
           <ul className="list-disc ml-4">
             {[
