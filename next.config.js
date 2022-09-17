@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  experimental: {
+    scrollRestoration: true,
+  },
   reactStrictMode: true,
   async rewrites() {
     return [
