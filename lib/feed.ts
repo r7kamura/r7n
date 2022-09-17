@@ -1,9 +1,9 @@
-import RSS from "rss";
+import Rss from "rss";
 import { listArticles, renderArticle } from "./article";
 import settings from "../settings";
 
 export async function generateFeed(): Promise<string> {
-  const rss = new RSS({
+  const rss = new Rss({
     description: "r7kamuraの生活やプログラミングに関するウェブサイト",
     feed_url: `${settings.siteBaseUrl}/feed.xml`,
     generator: "r7kamura/r7n",

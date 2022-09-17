@@ -35,7 +35,7 @@ const ShowSiteGuide: NextPage = () => {
       <h2>ご案内</h2>
       <p>
         <Link href="/feed.xml">
-          <a>RSS</a>
+          <a>Rss</a>
         </Link>
         で更新情報を配信しています。お好きなフィードリーダーで購読してください。
         作者は<a href="https://feedly.com/">Feedly</a>を利用しています。
