@@ -50,11 +50,7 @@ const ShowSiteGuide: NextPage = () => {
         <a href="https://github.com/sponsors/r7kamura">GitHub Sponsors</a>
         で、このウェブサイトの運営や作者のOSS活動を後援していただける方を募集しています。
         主な制作物として、各種言語のライブラリや、ブラウザ拡張、Custom GitHub
-        Actionなどがあります。 作者のお気に入りは、
-        <a href="https://chrome.google.com/webstore/detail/amazon-url-shortener/bonkcfmjkpdnieejahndognlbogaikdg">
-          AmazonのURLを勝手に整えるChrome拡張
-        </a>
-        です。
+        Actionなどがあります。
       </p>
       <p>
         このウェブサイトでは、商品を紹介するためにAmazon.co.jpアソシエイトを利用しています。
