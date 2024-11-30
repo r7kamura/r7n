@@ -17,7 +17,7 @@ npm install
 Run a server and open http://localhost:3000.
 
 ```
-npm run dev
+ARTICLES_DIRECTORY_PATHS=../r7kamura.com/articles npm run dev
 ```
 
 ### On publishment flow
