@@ -23,11 +23,6 @@ const Home: NextPage<Props> = ({ articles }) => {
         title="r7kamura.com"
       />
       <section>
-        <p>
-          r7kamura.comは、日々の生活やプログラミングに関する情報を発信する、r7kamuraのウェブサイトです。
-        </p>
-      </section>
-      <section className="mt-12">
         <ol className="flex flex-col gap-12">
           {articles.map((article) => (
             <li key={article.name}>
