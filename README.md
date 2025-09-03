@@ -4,13 +4,11 @@ The tool that powers [r7kamura/r7kamura.com](https://github.com/r7kamura/r7kamur
 
 ## Set up
 
-Use Node.js 16 or later.
-
-This tool was created during the Node.js 16 era, and has been verified to work with at least that version. It will likely work with future versions as well, but that cannot be guaranteed.
-
 ```
 npm install
 ```
+
+This tool was created during the Node.js 16 era, and has been verified to work with at least that version. It will likely work with future versions as well, but that cannot be guaranteed.
 
 ## Usage
 
