@@ -35,6 +35,7 @@ export default function CustomHead({
         property="twitter:card"
         content={imageUrl ? "summary_large_image" : "summary"}
       />
+      <meta name="Hatena::Bookmark" content="nocomment" />
     </Head>
   );
 }
