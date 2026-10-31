@@ -20,9 +20,7 @@ const Home: NextPage<Props> = ({ articles }) => {
           {articles.map((article) => (
             <li key={article.name}>
               <Time date={article.date} />
-              <Link href={`/articles/${article.name}`}>
-                <a>{article.title}</a>
-              </Link>
+              <Link href={`/articles/${article.name}`}>{article.title}</Link>
             </li>
           ))}
         </ol>

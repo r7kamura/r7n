@@ -27,16 +27,14 @@ const Home: NextPage<Props> = ({ articles }) => {
           {articles.map((article) => (
             <li key={article.name}>
               <Time date={article.date} />
-              <Link href={`/articles/${article.name}`}>
-                <a>{article.title}</a>
-              </Link>
+              <Link href={`/articles/${article.name}`}>{article.title}</Link>
               <p>{article.description}</p>
             </li>
           ))}
         </ol>
         <p className="mt-20">
-          <Link href="/articles">
-            <a className="before:content-['»_']">すべての記事一覧へ</a>
+          <Link href="/articles" className="before:content-['»_']">
+            すべての記事一覧へ
           </Link>
         </p>
       </section>
@@ -56,7 +54,7 @@ export async function getStaticProps() {
       .slice(0, 7)
       .map(async (article) => {
         return await renderArticle(article);
-      })
+      }),
   );
 
   return {

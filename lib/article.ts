@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { defaultSchema } from "hast-util-sanitize";
 import {
   convertAmazonLink,
   extractDescription,
@@ -77,7 +78,7 @@ export function listArticles(): Array<Article> {
 }
 
 export async function renderArticle(
-  article: Article
+  article: Article,
 ): Promise<RenderedArticle> {
   const renderResult = await renderArticleBody(article.body);
   return {
@@ -88,7 +89,12 @@ export async function renderArticle(
 
 async function renderArticleBody(articleBody: string): Promise<RenderResult> {
   const result = await remark()
-    .use(remarkHtml)
+    .use(remarkHtml, {
+      sanitize: {
+        ...defaultSchema,
+        tagNames: [...(defaultSchema.tagNames || []), "figcaption", "figure"],
+      },
+    })
     .use(convertAmazonLink as any)
     .use(extractDescription as any)
     .use(extractImageUrl as any)
@@ -103,7 +109,7 @@ async function renderArticleBody(articleBody: string): Promise<RenderResult> {
 }
 
 function articleNameToArticleMetadata(
-  articleName: string
+  articleName: string,
 ): ArticleMetadata | undefined {
   const matchArray = articleName.match(/^((\d{4}-\d{2}-\d{2})(?:-(.+))?)$/);
   if (matchArray) {
@@ -144,7 +150,7 @@ function articleFileToArticle(articleFile: ArticleFile): Article {
   const articleMatter = matter(articleFile.content);
   const articleName = path.basename(articleFile.path, ".md");
   const articleMetadata = articleNameToArticleMetadata(
-    articleName
+    articleName,
   ) as ArticleMetadata;
   return {
     ...articleMetadata,
