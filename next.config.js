@@ -4,15 +4,8 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  output: "export",
   reactStrictMode: true,
-  async rewrites() {
-    return [
-      {
-        destination: "/api/feed",
-        source: "/feed.xml",
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

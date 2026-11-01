@@ -18,10 +18,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         <header className="bg-gray-50 dark:bg-gray-800">
           <nav className="container mx-auto max-w-2xl px-4 py-12">
             <p>
-              <Link href="/">
-                <a className="font-bold text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
-                  r7kamura.com
-                </a>
+              <Link
+                href="/"
+                className="font-bold text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300"
+              >
+                r7kamura.com
               </Link>
             </p>
           </nav>
@@ -50,10 +51,11 @@ export default function Layout({ children }: { children: ReactNode }) {
               ].map(({ text, url }) => {
                 return (
                   <li key={url}>
-                    <Link href={url}>
-                      <a className="text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300">
-                        {text}
-                      </a>
+                    <Link
+                      href={url}
+                      className="text-gray-900 visited:text-gray-900 dark:text-gray-300 dark:visited:text-gray-300"
+                    >
+                      {text}
                     </Link>
                   </li>
                 );

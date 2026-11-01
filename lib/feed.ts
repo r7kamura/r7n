@@ -15,7 +15,7 @@ export async function generateFeed(): Promise<string> {
   const renderedArticles = await Promise.all(
     articles.map(async (article) => {
       return await renderArticle(article);
-    })
+    }),
   );
 
   renderedArticles.forEach(async (renderedArticle) => {

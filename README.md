@@ -8,7 +8,7 @@ The tool that powers [r7kamura/r7kamura.com](https://github.com/r7kamura/r7kamur
 npm install
 ```
 
-This tool was created during the Node.js 16 era, and has been verified to work with at least that version. It will likely work with future versions as well, but that cannot be guaranteed.
+This tool has been verified to work with Node.js 26 (the current LTS).
 
 ## Usage
 
