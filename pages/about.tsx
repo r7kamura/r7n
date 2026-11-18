@@ -51,8 +51,7 @@ const ShowSiteGuide: NextPage = () => {
         Actionなどがあります。
       </p>
       <p>
-        このウェブサイトでは、商品を紹介するためにAmazon.co.jpアソシエイトを利用しています。
-        また、Amazonで
+        Amazonで
         <a href="https://www.amazon.co.jp/gp/registry/wishlist/31WJYTS73D19K">
           ほしい物リスト
         </a>
