@@ -5,7 +5,6 @@ import { remark } from "remark";
 import remarkHtml from "remark-html";
 import { defaultSchema } from "hast-util-sanitize";
 import {
-  convertAmazonLink,
   extractDescription,
   extractImageUrl,
   transformTitledImageIntoFigure,
@@ -95,7 +94,6 @@ async function renderArticleBody(articleBody: string): Promise<RenderResult> {
         tagNames: [...(defaultSchema.tagNames || []), "figcaption", "figure"],
       },
     })
-    .use(convertAmazonLink as any)
     .use(extractDescription as any)
     .use(extractImageUrl as any)
     .use(transformTitledImageIntoFigure as any)

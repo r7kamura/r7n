@@ -1,16 +1,6 @@
 import { visit } from "unist-util-visit";
 import { select, selectAll } from "unist-util-select";
 
-export function convertAmazonLink() {
-  return (tree: any) => {
-    visit(tree, "link", function (node) {
-      if (node.url.startsWith("https://www.amazon.co.jp/dp/")) {
-        node.url += "?tag=r7kamuracom-22";
-      }
-    });
-  };
-}
-
 export function extractDescription() {
   return (tree: any, file: any) => {
     const texts = selectAll("text", tree.children[0]);
